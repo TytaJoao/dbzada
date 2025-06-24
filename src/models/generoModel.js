@@ -10,13 +10,13 @@ const Genero = sequelize.define(
             autoIncrement: true,
         },
         nome: {
-            type: DataTypes.STRING(255),
+            type: DataTypes.STRING(100),
             allowNull: false
         },
         descricao: {
-            type: DataTypes.STRING(255),
-            allowNull: false
-        },
+            type: DataTypes.TEXT,
+            allowNull: true
+        }
     },
     {
         freezeTableName: true,

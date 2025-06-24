@@ -10,13 +10,12 @@ const Desenvolvedora = sequelize.define(
             autoIncrement: true,
         },
         nome: {
-            type: DataTypes.STRING(100),
+            type: DataTypes.STRING(255),
             allowNull: false
         },
         pais: {
             type: DataTypes.STRING(14),
-            allowNull: false,
-            unique: true
+            allowNull: false
         },
         anoFundacao: {
             field: "ano_fundacao",
