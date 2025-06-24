@@ -1,0 +1,38 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: dbsteam_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: dbsteam
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - dbsteam_network
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: dbsteam_pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@dbsteam.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres
+    networks:
+      - dbsteam_network
+
+volumes:
+  postgres_data:
+
+networks:
+  dbsteam_network:
+    driver: bridge

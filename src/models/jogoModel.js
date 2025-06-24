@@ -2,7 +2,6 @@ import { DataTypes, Sequelize } from "sequelize";
 import { sequelize } from "../config/postgres.js";
 import Desenvolvedora from "./desenvolvedoraModel.js";
 import Distribuidora from "./distribuidoraModel.js";
-import Genero from "./generoModel.js";
 
 const Jogo = sequelize.define(
     'jogos',
@@ -57,17 +56,6 @@ Jogo.belongsTo(Distribuidora, {
     foreignKey:{
         name: 'idDistribuidora',
         field: 'id_distribuidora',
-        allowNull: false
-    },
-    onUpdate: 'NO ACTION',
-    onDelete: 'NO ACTION'
-});
-
-Jogo.belongsTo(Genero, {
-    as: 'genero',
-    foreignKey:{
-        name: 'idGenero',
-        field: 'id_genero',
         allowNull: false
     },
     onUpdate: 'NO ACTION',

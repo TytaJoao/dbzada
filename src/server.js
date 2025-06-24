@@ -15,7 +15,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const app = express();
 
 const logStream = fs.createWriteStream(
-    path.join(__dirname, '../access.log'),
+    path.join(__dirname, '../logs/access.log'),
     {flags: 'a'},
 );
 const corsOptions = {
